@@ -102,13 +102,16 @@
 </body>
 <script src="prism.js"></script>
 <script type="text/javascript">
+    
     (function () {
-    var burger = document.querySelector('.navbar-burger');
+        var burger = document.querySelector('.navbar-burger');
         var menu = document.querySelector('#' + burger.dataset.target);
         burger.addEventListener('click', function () {
             burger.classList.toggle('is-active');
             menu.classList.toggle('is-active');
         });
+
+
     })();
 
     document.addEventListener('DOMContentLoaded',function(){
@@ -139,13 +142,6 @@
 !apt install chromium-chromedriver
 
 url=${JSON.stringify(video)}
-f = open("mylist.txt", "w")
-files=[];
-for u in url['tiktokurl']:
-  print(u.split('/'))
-  files.append("file 'Snaptik.app_"+u.split('/')[-1]+".mp4'")
-f.write('\\n'.join(files))
-f.close()
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -169,8 +165,15 @@ for u in url['tiktokurl']:
     element=driver.find_element(By.LINK_TEXT,"Download").click()
     print(element)
 
+f = open("mylist.txt", "w")
+files = glob.iglob('*.mp4')
+files_i_care_about = filter(lambda x: not x.startswith("output.mp4"), files)
+f.write('\\n'.join(["file '"+s+"'" for s in files_i_care_about]))
+f.close()
 
-!ffmpeg -f concat -safe 0 -i mylist.txt -c copy output.mp4
+!ffmpeg -f concat -safe 0 -i mylist.txt -crf 21 -c copy output.mp4
+
+!mv /content/output.mp4 /content/drive/MyDrive/output.mp4
 `
     $('#json').html(script)
     }
@@ -179,16 +182,22 @@ for u in url['tiktokurl']:
         $(`#${id}`).remove()
         jsonurl()
     }
-    $('#tambah').on('click',function(){
+
+    function extractid(){
         var urltiktok=$('input[name="url"]').val()
-        urltiktok=urltiktok.split('/')
-        urltiktok=urltiktok.filter(function(e){return e});
-        urltiktok='https://m.tiktok.com/v/'+urltiktok.pop()+'.html'
+        var rx = /[0-9]{19}/g;
+        var arr = urltiktok.match(rx);
+        return arr.pop()
+    }
+
+    $('#tambah').on('click',function(){
+        var urltiktok=extractid()
+        urltiktok='https://m.tiktok.com/v/'+urltiktok+'.html'
         $.ajax({
           type: "GET",
           url: `https://www.tiktok.com/oembed?url=${urltiktok}`,
           success: function(msg){
-                console.log(msg)
+                console.log(msg,`https://www.tiktok.com/oembed?url=${urltiktok}`)
                 $('#listurl').append(`
                     <div class="urltiktok column is-half-mobile is-one-quarter-desktop is-half-tablet" id="${msg.embed_product_id}" data-url="${msg.author_url+'/video/'+msg.embed_product_id}">
                         <div class="card">
