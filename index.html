@@ -148,23 +148,29 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import TimeoutException
 
 for u in url['tiktokurl']:
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
-    driver =webdriver.Chrome('chromedriver',chrome_options=chrome_options)
-    wait = WebDriverWait(driver, 20)
-    driver.get("https://snaptik.app/en")
-    input_tag = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[2]/form/div/div[3]/input")
-    input_tag.send_keys(u)
-    input_tag.submit()
-    wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div/div[1]/div/div[1]'))).click()
-    element=driver.find_element(By.LINK_TEXT,"Download").click()
-    print(element)
+    try:
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
+        driver =webdriver.Chrome('chromedriver',chrome_options=chrome_options)
+        wait = WebDriverWait(driver, 20)
+        driver.get("https://snaptik.app/en")
+        input_tag = driver.find_element(By.XPATH, "/html/body/main/div[1]/div/div[2]/form/div/div[3]/input")
+        input_tag.send_keys(u)
+        input_tag.submit()
+        wait.until(EC.visibility_of_element_located((By.XPATH, '/html/body/main/div[2]/div/div/div[1]/div/div[1]'))).click()
+        element=driver.find_element(By.LINK_TEXT,"Download").click()
+        print(element)
+    except TimeoutException as ex:
+        print("#### LINK ERROR : "+u)
+        Driver.close()
 
+import glob
 f = open("mylist.txt", "w")
 files = glob.iglob('*.mp4')
 files_i_care_about = filter(lambda x: not x.startswith("output.mp4"), files)
@@ -173,7 +179,7 @@ f.close()
 
 !ffmpeg -f concat -safe 0 -i mylist.txt -crf 21 -c copy output.mp4
 
-!mv /content/output.mp4 /content/drive/MyDrive/output.mp4
+##!mv /content/output.mp4 /content/drive/MyDrive/output.mp4
 `
     $('#json').html(script)
     }
