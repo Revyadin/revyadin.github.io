@@ -168,7 +168,7 @@ for u in url['tiktokurl']:
         print(element)
     except TimeoutException as ex:
         print("#### LINK ERROR : "+u)
-        Driver.close()
+        driver.close()
 
 import glob
 f = open("mylist.txt", "w")
