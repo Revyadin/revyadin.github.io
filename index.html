@@ -1,3 +1,133 @@
-<?php
-echo "KONTOL";
->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIKTOK DOWNLOADER</title>
+
+    <meta property="og:site_name" content="Tiktok pargoy compilation tiktok script video maker">
+    <meta property="og:url" content="revyadin.github.io">
+    <meta property="og:title" name="title" content="tiktok video downloader script python google colab">
+    <meta property="og:description" name="description" content="This is a tool to make videos from tiktok with script google colab and python automatic downloader and collab their to mp4 video.">
+    <meta property="og:keywords" name="keywords" content="tiktok downloader google colab video pargoy cewek hot">
+    <meta property="og:language" name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:authors" name="author" content="tiktok donloader">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="prism.css" rel="stylesheet" />
+    <script src="jquery-linedtextarea.js"></script>
+    <link href="jquery-linedtextarea.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section class="section">
+    <nav class="navbar is-fixed-top is-info" style="background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="index.html">
+      <img src="https://fontmeme.com/permalink/221122/b13a3328a2eae385cdb18507c9d34ceb.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>
+    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="notes.html">
+        Notes Username
+      </a>
+    </div>
+
+    
+  </div>
+
+  
+</nav>
+
+    <div class="container mt-4">
+        <h1 class="title" title="tiktok kompilator video">
+            <img title="tiktok kompilator" src="https://fontmeme.com/permalink/221122/52020cbd9c5d29be6341123f03cfba3f.png" alt="tiktok kompilator">
+        </h1>
+        <hr>
+
+        <div class="filed">
+            <label class="label">Isikan link tiktok, setiap link pisahkan dengan ganti baris. *MAX 50 baris, jika lebih dari 60 baris maka bisa dibuat part.
+            <div class="notification is-light">
+                Klik untuk tempel semua/tempel sebagian
+              <div class="buttons has-addons">
+                  <button class="button is-link is-light is-outlined" id="tempel">
+                    <span class="icon">
+                      <i class="fa-solid fa-paste"></i>
+                    </span>
+                    <span>Tempel Semua</span>
+                  </button>
+                  <button class="button is-warning is-light is-outlined" id="tempelsebagian">
+                      <span class="icon">
+                          <i class="fa-solid fa-clipboard"></i>
+                      </span>
+                      <span>Tempel sebagian</span>
+                  </button>
+                  <button class="button is-danger is-light is-outlined" onclick="location.reload()">
+                    <span class="icon">
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
+                    <span>Clear</span>
+                  </button>
+                </div>
+            </div>
+            <div class="control is-fullwidth">
+                <textarea name="url" class="lined" rows="10" cols="100" wrap="off" style="resize: none; width: 100%;"></textarea>
+                <p style="text-align: right;">
+                    Total link : <span id="totallink"></span> | Total part : <span id="totalpart">
+                </p>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Pilih part video</label>
+            <div class="select is-danger is-fullwidth">
+              <select name="part">
+                <option>Select dropdown</option>
+              </select>
+            </div>
+        </div>
+        
+
+
+
+        <div class="field">
+          <label class="label">Script google colab</label>
+          <div class="control" data-prismjs-copy-timeout="500">
+            <pre><code class="language-python" data-prismjs-copy="Copy Script" id="json"></code></pre>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="label">Script ffmpeg</label>
+          <div class="control" data-prismjs-copy-timeout="500">
+            <pre><code class="language-bash" data-prismjs-copy="Copy Script" id="ffmpeg"></code></pre>
+          </div>
+        </div>
+
+        <div class="field">
+            <label class="label">List foto preview (<span id="jumlah">0</span>)</label>
+            <div class="columns is-multiline is-mobile" id="listurl"></div>
+        </div>
+
+    </div>
+
+
+  </section>
+</body>
+<script src="prism.js"></script>
+<script src="main.js"></script>
+</html>

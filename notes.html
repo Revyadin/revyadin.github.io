@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>History</title>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="prism.css" rel="stylesheet" />
+    <script src="jquery-linedtextarea.js"></script>
+    <link href="jquery-linedtextarea.css" rel="stylesheet">
+</head>
+<body>
+	<section class="section">
+		<nav class="navbar is-fixed-top is-info" style="background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+">
+		  <div class="navbar-brand">
+		    <a class="navbar-item" href="index.html">
+      <img src="https://fontmeme.com/permalink/221122/b13a3328a2eae385cdb18507c9d34ceb.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>
+		    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+		      <span></span>
+		      <span></span>
+		      <span></span>
+		    </div>
+		  </div>
+
+		  <div id="navbarExampleTransparentExample" class="navbar-menu">
+		    <div class="navbar-start">
+		      <a class="navbar-item" href="notes.html">
+		        Notes
+		      </a>
+		    </div>
+
+		    
+		  </div>
+
+		  
+		</nav>
+	<h1>Notes</h1>
+	<textarea name="history" class="lined" rows="50" cols="100" wrap="off" style="resize: none; width: 100%;"></textarea>
+	</section>
+</body>
+<script type="text/javascript">
+	(function () {
+        $(".lined").linedtextarea();
+        $('textarea[name="history"]').html(localStorage.getItem('username'))
+    })();
+
+    $('textarea[name="history"]').bind('input propertychange',function(){
+        var tmp=$('textarea[name="history"]').val()
+       	localStorage.setItem('username',tmp)
+    })
+</script>
+</html>
