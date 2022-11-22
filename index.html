@@ -62,7 +62,7 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
             <label class="label">Isikan link tiktok, setiap link pisahkan dengan ganti baris. *MAX 50 baris, jika lebih dari 60 baris maka bisa dibuat part.
             <div class="notification is-light">
                 Klik untuk tempel semua/tempel sebagian
-              <div class="buttons has-addons">
+              <div class="buttons has-addons is-hidden-mobile">
                   <button class="button is-link is-light is-outlined" id="tempel">
                     <span class="icon">
                       <i class="fa-solid fa-paste"></i>
@@ -81,6 +81,27 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                     </span>
                     <span>Clear</span>
                   </button>
+                </div>
+
+                <div class="buttons has-addons is-hidden-tablet">
+                    <button class="button is-fullwidth is-link is-light is-outlined" id="tempel">
+                        <span class="icon">
+                          <i class="fa-solid fa-paste"></i>
+                        </span>
+                        <span>Tempel Semua</span>
+                      </button>
+                      <button class="button is-fullwidth is-warning is-light is-outlined" id="tempelsebagian">
+                          <span class="icon">
+                              <i class="fa-solid fa-clipboard"></i>
+                          </span>
+                          <span>Tempel sebagian</span>
+                      </button>
+                      <button class="button is-fullwidth is-danger is-light is-outlined" onclick="location.reload()">
+                        <span class="icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                        <span>Clear</span>
+                      </button>
                 </div>
             </div>
             <div class="control is-fullwidth">
