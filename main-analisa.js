@@ -1,5 +1,6 @@
 var arrid=[]
 var sets=[]
+
 $("#fileupload").on('change',function(){
     console.log($(this).val())
 })
@@ -14,6 +15,13 @@ function selectfunction(id){
 
       console.log($(`#${id}`).find('.card-footer-item').addClass('is-info has-text-white'))
     }
+
+    arrid=[]
+    $('.urltiktok').each(function () {
+        arrid.push($(this).data('url'))
+    });
+    $('#dipilih').html(arrid.length)
+    jsonurl(arrid)
 }
 
 function extractsomeurl(str){
@@ -27,6 +35,7 @@ function extractsomeurl(str){
     }
     var MAX_PEMISAH=50
     var grouping=arrid.length/MAX_PEMISAH
+    
     return splitArray(arrid,grouping)
 }
 
@@ -52,6 +61,8 @@ document.getElementById('inputfile')
     var fr=new FileReader();
     fr.onload=function(){
         console.log(extractsomeurl(fr.result))
+        $('#jumlahlink').html(arrid.length)
+        $('#jumlahpart').html(sets.length)
     }
       
     fr.readAsText(this.files[0]);
