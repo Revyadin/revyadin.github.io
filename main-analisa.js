@@ -1,22 +1,33 @@
-var sets = [];
-(function () {
-    var burger = document.querySelector('.navbar-burger');
-    var menu = document.querySelector('#' + burger.dataset.target);
-    burger.addEventListener('click', function () {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-    });
-    $(".lined").linedtextarea();
-})();
+var arrid=[]
+var sets=[]
+$("#fileupload").on('change',function(){
+    console.log($(this).val())
+})
 
-function totallink(){
-    var text = $("textarea[name='url']").val();   
-    var lines = text.split(/\r|\r\n|\n/);
-    var count = lines.length;
-    $('#totallink').html(count)
+function selectfunction(id){
+    
+    if ($(`#${id}`).hasClass("urltiktok")) {
+      $(`#${id}`).removeClass('urltiktok has-background-info');
+      $(`#${id}`).find('.card-footer-item').attr('class', 'card-footer-item');
+    }else{
+      $(`#${id}`).addClass('urltiktok has-background-info')
+
+      console.log($(`#${id}`).find('.card-footer-item').addClass('is-info has-text-white'))
+    }
+}
+
+function extractsomeurl(str){
+    var re = new RegExp("(<a href=\"https://www.tiktok.com/@.*?/[0-9]{19}\">)", "g");
+    var matches = [];
+    while(matches = re.exec(str)) {
+      // console.log(matches[1]);
+      var rx = /https:\/\/www.tiktok.com\/@.*?\/[0-9]{19}/g;
+      var arr = matches[1].match(rx);
+      arrid.push(arr.pop())
+    }
     var MAX_PEMISAH=50
-    var grouping=lines.length/MAX_PEMISAH
-    splitArray(lines,grouping)
+    var grouping=arrid.length/MAX_PEMISAH
+    return splitArray(arrid,grouping)
 }
 
 function splitArray(array, groups) {
@@ -35,39 +46,16 @@ function splitArray(array, groups) {
     return sets;
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-    let pasteButton = document.getElementById('tempel');
-    pasteButton.addEventListener('click', function () {
-        navigator.clipboard
-            .readText()
-            .then(
-                cliptext =>
-                    ($('textarea[name="url"]').val(cliptext).trigger('input')),
-                    err => console.log(err)
-            );
-        totallink()
-    });
+document.getElementById('inputfile')
+    .addEventListener('change', function() {
+      
+    var fr=new FileReader();
+    fr.onload=function(){
+        console.log(extractsomeurl(fr.result))
+    }
+      
+    fr.readAsText(this.files[0]);
 })
-
-document.addEventListener('DOMContentLoaded',function(){
-    let pasteButton = document.getElementById('tempelsebagian');
-    pasteButton.addEventListener('click', function () {
-        var tmp=$('textarea[name="url"]').val()
-        navigator.clipboard
-            .readText()
-            .then(
-                cliptext =>
-                    ($('textarea[name="url"]').val(tmp+'\n'+cliptext).trigger('input')),
-                    err => console.log(err)
-            );
-        totallink()
-    });
-})
-
-$('textarea[name="url"]').bind('input propertychange',function(){
-    totallink()
-})
-
 
 function jsonurl(array){
     var d = new Date();
@@ -125,16 +113,16 @@ f.close()
 `
 $('#json').html(script)
 }
-function hapus(id){
+function selectunselect(){
 
-    $(`#${id}`).remove()
-    jsonurl()
-}
+    if ($(`.selectunselect`).hasClass("urltiktok")) {
+      $(`.selectunselect`).removeClass('urltiktok has-background-info');
+      $(`.selectunselect`).find('.card-footer-item').attr('class', 'card-footer-item');
+    }else{
+      $(`.selectunselect`).addClass('urltiktok has-background-info')
 
-function extractid(url){
-    var rx = /[0-9]{19}/g;
-    var arr = url.match(rx);
-    return arr.pop()
+      console.log($(`.selectunselect`).find('.card-footer-item').addClass('is-info has-text-white'))
+    }
 }
 
 $('select[name="part"]').on('change',function(){
@@ -152,11 +140,11 @@ $('select[name="part"]').on('change',function(){
                 console.log(msg,`https://www.tiktok.com/oembed?url=${urltiktok}`)
 
                 $('#listurl').append(`
-                    <div class="urltiktok column is-half-mobile is-one-quarter-desktop is-half-tablet" id="${msg.embed_product_id}" data-url="${msg.author_url+'/video/'+msg.embed_product_id}">
+                    <div class="column selectunselect is-half-mobile is-one-fifth-desktop is-half-tablet" id="${msg.embed_product_id}" data-url="${msg.author_url+'/video/'+msg.embed_product_id}">
                         <div class="card">
                             <div class="card-image">
-                                <figure class="image is-3by2">
-                                  <img src="${msg.thumbnail_url}" alt="">
+                                <figure class="image">
+                                  <img style="height:33%;width:auto;" src="${msg.thumbnail_url}" alt="">
                                 </figure>
                                 <div class="card-content is-overlay is-clipped">
                                   <span class="tag is-danger">
@@ -165,8 +153,8 @@ $('select[name="part"]').on('change',function(){
                                 </div>
                             </div>
                             <footer class="card-footer">
-                                <a class="card-footer-item" onClick="hapus('${msg.embed_product_id}')">
-                                  Hapus
+                                <a class="card-footer-item" href="javascript:void(0)" onclick="selectfunction('${msg.embed_product_id}')">
+                                  Pilih
                                 </a>
                             </footer>
                         </div>
@@ -186,9 +174,3 @@ $('select[name="part"]').on('change',function(){
         console.dir(responseList)
     })
 })
-
-
-$("#copy").click(function(){
-    $("#code").select();
-    document.execCommand('copy');
-});

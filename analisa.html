@@ -41,7 +41,7 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="analisa.html">
+      <a class="navbar-item is-active" href="analisa.html">
         <div style="position:relative">  
             <span class="icon"><i class="fa-brands fa-tiktok"></i></span>
             <span>Analisa page tiktok</span>
@@ -73,58 +73,14 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
         </h1>
         <hr>
 
-        <div class="filed">
-            <label class="label">Isikan link tiktok, setiap link pisahkan dengan ganti baris. *MAX 50 baris, jika lebih dari 60 baris maka bisa dibuat part.
-            <div class="notification is-light">
-                Klik untuk tempel semua/tempel sebagian
-              <div class="buttons has-addons is-hidden-mobile">
-                  <button class="button is-link is-light is-outlined" id="tempel">
-                    <span class="icon">
-                      <i class="fa-solid fa-paste"></i>
-                    </span>
-                    <span>Tempel Semua</span>
-                  </button>
-                  <button class="button is-warning is-light is-outlined" id="tempelsebagian">
-                      <span class="icon">
-                          <i class="fa-solid fa-clipboard"></i>
-                      </span>
-                      <span>Tempel sebagian</span>
-                  </button>
-                  <button class="button is-danger is-light is-outlined" onclick="location.reload()">
-                    <span class="icon">
-                        <i class="fa-solid fa-trash"></i>
-                    </span>
-                    <span>Clear</span>
-                  </button>
-                </div>
-
-                <div class="buttons has-addons is-hidden-tablet">
-                    <button class="button is-fullwidth is-link is-light is-outlined" id="tempel">
-                        <span class="icon">
-                          <i class="fa-solid fa-paste"></i>
-                        </span>
-                        <span>Tempel Semua</span>
-                      </button>
-                      <button class="button is-fullwidth is-warning is-light is-outlined" id="tempelsebagian">
-                          <span class="icon">
-                              <i class="fa-solid fa-clipboard"></i>
-                          </span>
-                          <span>Tempel sebagian</span>
-                      </button>
-                      <button class="button is-fullwidth is-danger is-light is-outlined" onclick="location.reload()">
-                        <span class="icon">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                        <span>Clear</span>
-                      </button>
-                </div>
-            </div>
-            <div class="control is-fullwidth">
-                <textarea name="url" class="lined" rows="10" cols="100" wrap="off" style="resize: none; width: 100%;"></textarea>
-                <p style="text-align: right;">
-                    Total link : <span id="totallink"></span> | Total part : <span id="totalpart">
-                </p>
-            </div>
+        <div class="field">
+          <div class="notification is-light">
+            Upload page tiktok yang didownload *pastikan telah termuat seluruh media sebelumnya
+            <input type="file" name="file" class="input" id="inputfile">
+          </div>
+          <p style="text-align: right;">
+            Jumlah link <span>99</span> | Jumlah part <span></span>
+          </p>
         </div>
 
         <div class="field">
@@ -135,35 +91,37 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
               </select>
             </div>
         </div>
-        
-
-
 
         <div class="field">
-          <label class="label">Script google colab</label>
-          <div class="control" data-prismjs-copy-timeout="500">
-            <pre><code class="language-python" data-prismjs-copy="Copy Script" id="json"></code></pre>
+          <label class="label">Pilih video dan thumbnail <span onclick="selectunselect()" class="tag is-link button">Select/Unselect</span></label>
+          <br>
+          <div class="columns is-multiline is-mobile" id="listurl">
+            
+            <!-- <div class="column is-half-mobile is-one-quarter-desktop is-one-quarter-tablet" id="1999">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-3by2">
+                          <img src="#" alt="">
+                        </figure>
+                        <div class="card-content is-overlay is-clipped">
+                          <span class="tag is-danger"></span>       
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="button card-footer-item" href="javascript:void(0)" onclick="selectfunction('1999')">
+                          Pilih
+                        </button>
+                    </footer>
+                </div>
+            </div> -->
+
           </div>
         </div>
-
-
-        <div class="field">
-          <label class="label">Script ffmpeg</label>
-          <div class="control" data-prismjs-copy-timeout="500">
-            <pre><code class="language-bash" data-prismjs-copy="Copy Script" id="ffmpeg"></code></pre>
-          </div>
-        </div>
-
-        <div class="field">
-            <label class="label">List foto preview (<span id="jumlah">0</span>)</label>
-            <div class="columns is-multiline is-mobile" id="listurl"></div>
-        </div>
-
     </div>
 
 
   </section>
 </body>
 <script src="prism.js"></script>
-<script src="main.js"></script>
+<script src="main-analisa.js"></script>
 </html>
