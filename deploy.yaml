@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v4
+      
+      # Step 2: Clone the source repository and navigate to the directory
+      - name: Clone Source Repository
+        run: |
+          git clone https://github.com/Revyadin/source.revyadin.github.io.git source
+          cd source
+      
+      # Step 3: Enable Corepack
+      - name: Enable Corepack
+        run: corepack enable
+      
+      # Step 4: Set up Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      
+      # Step 5: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+      
+      # Step 6: Build for GitHub Pages
+      - name: Build for GitHub Pages
+        run: npx nuxt build --preset github_pages
+      
+      # Step 7: Upload the build artifact
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./.output/public
+
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    
+    # Deploy to the github_pages environment
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
