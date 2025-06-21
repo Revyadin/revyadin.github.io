@@ -1,0 +1,62 @@
+[
+  {
+    "name": "PHP",
+    "detail": "Php Native, Laravel, Slim-3 symphony",
+    "color": "bg-red-500"
+  },
+  {
+    "name": "Javascript",
+    "detail": "Vue.js, React.js, Nuxt.js, Express.js, HTML, Node.js",
+    "color": "bg-blue-600"
+  },
+  {
+    "name": "Database",
+    "detail": "Mysql, Postgresql, GraphQL, Hasura",
+    "color": "bg-yellow-400"
+  },
+  {
+    "name": "Containerization",
+    "detail": "Podman (Docker)",
+    "color": "bg-red-500"
+  },
+  {
+    "name": "Backed-as-a-Service",
+    "detail": "NHost, Supabase",
+    "color": "bg-blue-600"
+  },
+  {
+    "name": "Version Control",
+    "detail": "Git, GitHub, GitLab",
+    "color": "bg-yellow-400"
+  },
+  {
+    "name": "API Development",
+    "detail": "API Development and System Integration",
+    "color": "bg-red-500"
+  },
+  {
+    "name": "UI/UX Design",
+    "detail": "UI/UX Design Integration and System Documentation",
+    "color": "bg-blue-600"
+  },
+  {
+    "name": "System Design",
+    "detail": "Billing and Inventory Management Systems",
+    "color": "bg-yellow-400"
+  },
+  {
+    "name": "Cloud",
+    "detail": "AWS, Digital Ocean, Linode",
+    "color": "bg-red-500"
+  },
+  {
+    "name": "AWS",
+    "detail": "Cloud Infrastructure Basics (AWS, in progress)",
+    "color": "bg-blue-600"
+  },
+  {
+    "name": "Communication",
+    "detail": "Strong Communication and Teamwork Skills",
+    "color": "bg-yellow-400"
+  }
+]

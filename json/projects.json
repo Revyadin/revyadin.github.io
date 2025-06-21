@@ -1,0 +1,23 @@
+[
+  {
+    "title": "IT STAFF (2023 - PRESENT)",
+    "place": "Soehartono Tjokro Group",
+    "description": "Designed and developed a machine inventory system to support more effective asset management.Built a doctor appointment booking system to streamline healthcare administration processes. Developed an Electronic Medical Record (ERM) system to assist medical staff with more accurate patient data recording and access. Maintained and enhanced the web-based education system by adding new features to improve user experience.",
+    "tech": ["REACT.JS", "NODE.JS", "NEXT.JS", "TAILWIND CSS","VUE.JS","LARAVEL", "PHP","HASURA","SERVERPOD","EXPRESS.JS","MVP","DESIGN SYSTEM"],
+    "color": "bg-red-500"
+  },
+  {
+    "title": "PROGRAMMER (2021 - 2023)",
+    "place": "PT Sahabat Bintang Sejahtera",
+    "description": "Developed responsive web applications, APIs, and web scraping tools using Django, Flask, and Laravel to support marketing data and operational needs. Simplified supply chain management workflows through the development of an integrated web-based system.",
+    "tech": ["PWA", "Scrapping", "Bot Whatsapp", "Django", "Flask", "Laravel", "PHP"],
+    "color": "bg-blue-600"
+  },
+  {
+    "title": "FULL STACK DEVELOPER (2020 - 2021)",
+    "place": "Personal Project",
+    "description": "Developed a mobile website to support government seed sales programs, making information distribution more accessible. Designed and built a multi-branch PlayStation billing integration system to streamline daily transactions and reporting. Developed a pharmacy inventory system to improve stock management and product tracking.",
+    "tech": ["Flask", "MySql", "Ionic", "Angular","LEAD TEAM","DESIGN SYSTEM","COLLABORATION"],
+    "color": "bg-yellow-400"
+  }
+]

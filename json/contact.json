@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Email",
+    "url": "mailto:revyadin123@gmail.com",
+    "color": "bg-yellow-400"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/Revyadin",
+    "color": "bg-red-400"
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/m-rifqi-najmudin-53379924b/",
+    "color": "bg-blue-400"
+  }
+]
